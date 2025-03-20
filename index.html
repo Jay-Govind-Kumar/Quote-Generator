@@ -1,0 +1,93 @@
+<!-- 
+Objective:
+  - Create a simple website that fetches and displays a random quote from the API.
+
+Feature:
+  - Fetch a random quote from the api.
+  - Display the quote and author on the page.
+  - Add a "new quote" button to fetch another quote.
+  - Implement a copy to clipboard button.
+  - Add a share on Twwitter button.
+  - Bonus extra poitns:
+    - Set a random background image behind the quote
+    - Add a "Export" button to save the quote image to user computer.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator | Jay Govind</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Include the html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Heading -->
+      <div class="header">
+        <!-- Title -->
+        <h1>Random Quote Generator</h1>
+
+        <!-- Theme Buttons (Additional) -->
+        <!-- <div class="theme-buttons">
+          <button id="light"><i class="fas fa-sun"></i> Light</button>
+          <button id="dark"><i class="fas fa-moon"></i> Dark</button>
+        </div> -->
+      </div>
+
+      <!-- Quote & Background -->
+      <div id="background"></div>
+      <div class="quote">
+        <p id="quote">"Quote will be displayed here"</p>
+        <p id="author">- Author</p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <div class="action-buttons">
+          <button id="new-quote" title="New Quote">New Quote</button>
+          <button id="copy" title="Copy Quote">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+          <button id="export" title="Export Quote">
+            <i class="fas fa-download"></i> Export
+          </button>
+        </div>
+        <div class="social-share">
+          <button id="tweet" title="Share on Twitter">
+            <i class="fab fa-twitter"></i> Share on Twitter
+          </button>
+          <button id="share" title="Share on Whatsapp">
+            <i class="fab fa-whatsapp"></i> Share on Whatsapp
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Section -->
+      <footer>
+        <p>&copy; 2025 | Jay Govind | All Rights Reserved</p>
+        <!-- Footer Icons -->
+        <div class="footer-icons">
+          <a href="https://github.com/jaygovind" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://twitter.com/jaygovind" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/jaygovind/" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
