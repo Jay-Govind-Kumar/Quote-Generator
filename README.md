@@ -1,8 +1,8 @@
 # Random Quote Generator
 
-**[Live Demo]()**
+**[Live Demo](https://favouritequote.vercel.app/)**
 
-![](./assets/screenshot.png)
+![](./assets/bg.png)
 
 ## Overview
 
