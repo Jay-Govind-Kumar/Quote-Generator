@@ -1,26 +1,15 @@
 // API: https://api.freeapi.app/api/V1/public/quotes/quote/random
 
 const background = document.getElementById("background");
-
 const quote = document.getElementById("quote");
 const author = document.getElementById("author");
-
 const newQuoteBtn = document.getElementById("new-quote");
 const copyBtn = document.getElementById("copy");
 const exportBtn = document.getElementById("export");
 const twitterShareBtn = document.getElementById("tweet");
 const whatsappShareBtn = document.getElementById("share");
 
-// event listeners for buttons
-
-newQuoteBtn.addEventListener("click", getQuote);
-copyBtn.addEventListener("click", copyQuote);
-// exportBtn.addEventListener("click", exportQuote);
-twitterShareBtn.addEventListener("click", shareOnTwitter);
-whatsappShareBtn.addEventListener("click", shareOnWhatsApp);
-
 // images for background
-
 const images = [
   "https://images.unsplash.com/photo-1742144897659-8a3e8a0a090c?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://images.unsplash.com/photo-1742217279960-977bb5d13f75?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -34,7 +23,6 @@ const images = [
 ];
 
 // get quote from API on new quote button click
-
 function getQuote() {
   fetch("https://api.freeapi.app/api/V1/public/quotes/quote/random")
     .then((response) => response.json())
@@ -46,18 +34,12 @@ function getQuote() {
     });
 }
 
-getQuote(); // get quote on page load
-
 // display message on quote copy
 function displayMessage() {
   const copiedDiv = document.createElement("div");
-  copiedDiv.style.position = "absolute";
+  copiedDiv.classList.add("copiedDivBtn");
   copiedDiv.style.top = `${event.clientY}px`;
   copiedDiv.style.left = `${event.clientX}px`;
-  copiedDiv.style.backgroundColor = "black";
-  copiedDiv.style.color = "white";
-  copiedDiv.style.padding = "10px";
-  copiedDiv.style.borderRadius = "5px";
   copiedDiv.textContent = "Quote copied to clipboard";
   document.body.appendChild(copiedDiv);
   setTimeout(() => {
@@ -79,26 +61,27 @@ function copyQuote() {
   displayMessage();
 }
 
-// export quote & author on export button click in the form of image file wth background image
-
+// export quote & author on export button click in the form of image file with background image
 function exportQuote() {
-  const quoteText = quote.textContent;
-  const authorText = author.textContent;
-  const canvas = document.createElement("canvas");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const context = canvas.getContext("2d");
-  context.fillStyle = "white";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(background, 0, 0, canvas.width, canvas.height);
-  context.fillStyle = "black";
-  context.font = "20px Arial";
-  context.fillText(quoteText, 20, 20);
-  context.fillText(authorText, 20, 40);
-  const link = document.createElement("a");
-  link.download = "quote.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+  const container = document.getElementById("quote-container");
+  container.classList.add("quote-container");
+
+  html2canvas(container, {
+    useCORS: true,
+  })
+    .then((canvas) => {
+      const image = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.download = "quote.png";
+      link.href = image;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      container.classList.remove("quote-container");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 // share quote on linkedin on twitter share button click
@@ -116,3 +99,13 @@ function shareOnWhatsApp() {
   const whatsappUrl = `https://wa.me/?text="Quote : ${quoteText}" \nAuthor : ${authorText}`;
   window.open(whatsappUrl, "_blank");
 }
+
+// event listeners for buttons
+newQuoteBtn.addEventListener("click", getQuote);
+copyBtn.addEventListener("click", copyQuote);
+exportBtn.addEventListener("click", exportQuote);
+twitterShareBtn.addEventListener("click", shareOnTwitter);
+whatsappShareBtn.addEventListener("click", shareOnWhatsApp);
+
+// get quote on page load
+getQuote();

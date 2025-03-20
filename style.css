@@ -45,44 +45,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* Theme Buttons */
-
-/* .theme-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.theme-buttons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: #007bff;
-  box-shadow: inset 0 0 0 0 #0062cc;
-  transition: background-color 0.3s ease;
-}
-
-.theme-buttons button:hover {
-  background-color: #0062cc;
-}
-
-.theme-buttons #light {
-  color: #fff;
-}
-.theme-buttons #light i {
-  color: yellow;
-}
-
-.theme-buttons #dark {
-  color: #000;
-}
-
-.theme-buttons #dark i {
-  color: #000;
-} */
-
 /* Background Image */
 #background {
   width: 100%;
@@ -98,6 +60,19 @@ body {
 }
 
 /* Quote Box */
+.quote-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .quote {
   width: 85%;
   max-width: 600px;
@@ -150,6 +125,14 @@ body {
   gap: 10px;
   width: 100%;
   justify-content: space-between;
+}
+
+.copiedDivBtn {
+  position: absolute;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .social-share {
@@ -252,7 +235,8 @@ footer p {
   }
 
   .quote {
-    width: 90%;
+    width: 80%;
+    max-width: 400px;
   }
 
   .quote p {
